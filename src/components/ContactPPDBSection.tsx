@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Send, Phone, Mail, MapPin, CheckCircle, ShieldCheck } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Send, Phone, Mail, MapPin, CheckCircle, ShieldCheck, UserCheck, Calendar } from 'lucide-react';
+import { saveLocalSubmission, getLocalSubmissions, ContactSubmission } from '@/data/portalData';
 
 export const ContactPPDBSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -14,39 +15,29 @@ export const ContactPPDBSection: React.FC = () => {
 
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
+  const [savedSubmissions, setSavedSubmissions] = useState<ContactSubmission[]>([]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  useEffect(() => {
+    setSavedSubmissions(getLocalSubmissions());
+  }, []);
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    setErrorMsg('');
 
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      if (res.ok) {
-        setSuccess(true);
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          programType: 'Layanan Hambatan Penglihatan (Tunanetra - A)',
-          message: '',
-        });
-      } else {
-        const err = await res.json();
-        setErrorMsg(err.error || 'Gagal mengirim formulir pendaftaran.');
-      }
-    } catch (e) {
-      console.error(e);
-      setErrorMsg('Koneksi terputus. Silakan coba beberapa saat lagi.');
-    } finally {
+    setTimeout(() => {
+      const created = saveLocalSubmission(formData);
+      setSavedSubmissions((prev) => [created, ...prev]);
+      setSuccess(true);
       setSubmitting(false);
-    }
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        programType: 'Layanan Hambatan Penglihatan (Tunanetra - A)',
+        message: '',
+      });
+    }, 400);
   };
 
   return (
@@ -66,7 +57,7 @@ export const ContactPPDBSection: React.FC = () => {
             </h2>
 
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
-              Silakan isi formulir konsultasi resmi di bawah ini. Tim psikolog dan terapis pendamping SLB Negeri Surakarta akan segera menghubungi Anda untuk menentukan jadwal asesmen awal.
+              Silakan isi formulir konsultasi resmi di bawah ini. Pendaftaran ini langsung tersimpan aman di browser Anda (Full Browser Local Storage).
             </p>
 
             <div className="space-y-4 pt-4 border-t border-slate-200 text-slate-700 text-sm">
@@ -98,9 +89,33 @@ export const ContactPPDBSection: React.FC = () => {
             <div className="p-4 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-900 flex items-start gap-2.5">
               <ShieldCheck className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
               <span>
-                <strong>Jaminan Kerahasiaan Data:</strong> Seluruh data calon siswa disimpan secara pribadi di database lokal SLB Negeri Surakarta.
+                <strong>Jaminan Kerahasiaan Data:</strong> Data pendaftaran disimpan 100% secara lokal di browser perangkat Anda tanpa server luar.
               </span>
             </div>
+
+            {/* Saved Submissions History */}
+            {savedSubmissions.length > 0 && (
+              <div className="pt-6 border-t border-slate-200 space-y-3">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
+                  <UserCheck className="w-4 h-4 text-emerald-600" />
+                  <span>Riwayat Pendaftaran Lokal ({savedSubmissions.length})</span>
+                </h4>
+                <div className="space-y-2 max-h-48 overflow-y-auto pr-1">
+                  {savedSubmissions.map((sub) => (
+                    <div key={sub.id} className="p-3 bg-slate-100 rounded-lg border border-slate-200 text-xs space-y-1">
+                      <div className="flex items-center justify-between font-bold text-slate-900">
+                        <span>{sub.name}</span>
+                        <span className="text-[10px] text-slate-500 flex items-center gap-1">
+                          <Calendar className="w-3 h-3 text-blue-700" />
+                          {new Date(sub.createdAt).toLocaleDateString('id-ID')}
+                        </span>
+                      </div>
+                      <p className="text-slate-600 truncate">{sub.programType}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
           </div>
 
@@ -109,9 +124,9 @@ export const ContactPPDBSection: React.FC = () => {
             {success ? (
               <div className="text-center py-12 space-y-4">
                 <CheckCircle className="w-16 h-16 text-emerald-600 mx-auto" />
-                <h3 className="text-2xl font-extrabold text-slate-900">Formulir Berhasil Diterima!</h3>
+                <h3 className="text-2xl font-extrabold text-slate-900">Formulir Berhasil Disimpan!</h3>
                 <p className="text-slate-600 text-sm max-w-md mx-auto leading-relaxed">
-                  Data calon siswa telah tersimpan dengan aman di database lokal SQLite SLB Negeri Surakarta. Tim sekretariat PPDB akan segera menghubungi kontak telepon Anda.
+                  Data calon siswa telah tersimpan dengan aman di browser lokal Anda (Local Storage).
                 </p>
                 <button
                   onClick={() => setSuccess(false)}
@@ -128,12 +143,6 @@ export const ContactPPDBSection: React.FC = () => {
                   </h3>
                   <p className="text-xs text-slate-500">Lengkapi data orang tua / wali di bawah ini (* wajib diisi)</p>
                 </div>
-
-                {errorMsg && (
-                  <div className="p-3 bg-red-100 border border-red-200 text-red-800 text-xs font-bold rounded-lg">
-                    {errorMsg}
-                  </div>
-                )}
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
@@ -224,11 +233,11 @@ export const ContactPPDBSection: React.FC = () => {
                   className="w-full bg-blue-900 hover:bg-blue-950 text-amber-300 font-bold py-3.5 rounded-lg shadow-xs hover:shadow transition-all flex items-center justify-center gap-2 text-sm disabled:opacity-50 border border-blue-800"
                 >
                   {submitting ? (
-                    <span>Proses Memasukkan Ke SQLite...</span>
+                    <span>Menyimpan ke Browser Local Storage...</span>
                   ) : (
                     <>
                       <Send className="w-4 h-4 text-amber-400" />
-                      <span>Kirim Pendaftaran &amp; Simpan Ke Database Lokal</span>
+                      <span>Simpan Pendaftaran (Browser Local Storage)</span>
                     </>
                   )}
                 </button>
