@@ -30,11 +30,16 @@ export const ProgramsSection: React.FC = () => {
     fetch('/api/programs')
       .then((res) => res.json())
       .then((data) => {
-        setPrograms(data);
+        if (Array.isArray(data)) {
+          setPrograms(data);
+        } else {
+          setPrograms([]);
+        }
         setLoading(false);
       })
       .catch((err) => {
         console.error('Failed to load programs:', err);
+        setPrograms([]);
         setLoading(false);
       });
   }, []);

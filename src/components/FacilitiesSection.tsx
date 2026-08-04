@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Volume2, Building2, CheckCircle2 } from 'lucide-react';
+import { Volume2, Building2 } from 'lucide-react';
 import { useAccessibility } from './AccessibilityContext';
 
 interface Facility {
@@ -21,11 +21,16 @@ export const FacilitiesSection: React.FC = () => {
     fetch('/api/facilities')
       .then((res) => res.json())
       .then((data) => {
-        setFacilities(data);
+        if (Array.isArray(data)) {
+          setFacilities(data);
+        } else {
+          setFacilities([]);
+        }
         setLoading(false);
       })
       .catch((err) => {
         console.error('Failed to load facilities:', err);
+        setFacilities([]);
         setLoading(false);
       });
   }, []);

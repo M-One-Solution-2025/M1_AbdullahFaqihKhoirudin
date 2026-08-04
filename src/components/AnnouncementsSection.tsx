@@ -24,11 +24,16 @@ export const AnnouncementsSection: React.FC = () => {
     fetch('/api/announcements')
       .then((res) => res.json())
       .then((data) => {
-        setAnnouncements(data);
+        if (Array.isArray(data)) {
+          setAnnouncements(data);
+        } else {
+          setAnnouncements([]);
+        }
         setLoading(false);
       })
       .catch((err) => {
         console.error('Failed to load announcements:', err);
+        setAnnouncements([]);
         setLoading(false);
       });
   }, []);
