@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-scale: 1;
+  --bg-primary: #F8FAFC;
+  --text-primary: #0F172A;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: calc(1rem * var(--font-scale));
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: font-size 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Authentic Traditional Pattern Overlay Accent */
+.batik-accent-bg {
+  background-color: #0F2C59;
+  background-image: radial-gradient(#1E40AF 0.75px, transparent 0.75px), radial-gradient(#1E40AF 0.75px, #0F2C59 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+/* High Contrast Mode for Accessibility */
+body.high-contrast {
+  --bg-primary: #000000;
+  --text-primary: #FACC15;
+  background-color: #000000 !important;
+  color: #FACC15 !important;
+}
+
+body.high-contrast * {
+  border-color: #FACC15 !important;
+}
+
+body.high-contrast .bg-white,
+body.high-contrast .bg-slate-50,
+body.high-contrast .bg-slate-100,
+body.high-contrast .bg-blue-50,
+body.high-contrast .bg-indigo-50 {
+  background-color: #121212 !important;
+  color: #FACC15 !important;
+}
+
+body.high-contrast .bg-slate-900,
+body.high-contrast .bg-brand-900,
+body.high-contrast .bg-blue-900 {
+  background-color: #000000 !important;
+  border: 2px solid #FACC15 !important;
+  color: #FFFFFF !important;
+}
+
+body.high-contrast button,
+body.high-contrast a {
+  color: #FACC15 !important;
+  text-decoration: underline !important;
+}
+
+/* Accessible Focus Outline */
+*:focus-visible {
+  outline: 3px solid #D97706 !important;
+  outline-offset: 3px;
+}

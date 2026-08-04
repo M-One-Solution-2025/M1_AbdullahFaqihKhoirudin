@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SLB Negeri Surakarta - Special Needs Education</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Poppins:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#434655",
+                        "tertiary": "#943700",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#dee8ff",
+                        "secondary-container": "#6bff8f",
+                        "on-surface": "#111c2d",
+                        "on-primary-container": "#eeefff",
+                        "on-primary-fixed": "#00174b",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "inverse-surface": "#263143",
+                        "on-tertiary-container": "#ffede6",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f9f9ff",
+                        "surface-dim": "#cfdaf2",
+                        "tertiary-container": "#bc4800",
+                        "secondary-fixed-dim": "#4ae176",
+                        "on-background": "#111c2d",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#005321",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-tint": "#0053db",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffdbcd",
+                        "secondary": "#006e2f",
+                        "surface-bright": "#f9f9ff",
+                        "on-secondary-container": "#007432",
+                        "surface-container-highest": "#d8e3fb",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "inverse-on-surface": "#ecf1ff",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c3c6d7",
+                        "on-secondary-fixed": "#002109",
+                        "on-secondary": "#ffffff",
+                        "outline": "#737686",
+                        "primary": "#004ac6",
+                        "on-tertiary-fixed": "#360f00",
+                        "surface-container": "#e7eeff",
+                        "secondary-fixed": "#6bff8f",
+                        "surface-container-low": "#f0f3ff",
+                        "on-error": "#ffffff",
+                        "primary-container": "#2563eb",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-variant": "#d8e3fb",
+                        "surface": "#f9f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.25rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "lg": "40px",
+                        "xl": "64px",
+                        "md": "24px",
+                        "base": "8px",
+                        "sm": "12px",
+                        "margin-desktop": "80px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Poppins"],
+                        "headline-lg": ["Poppins"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg-mobile": ["Poppins"],
+                        "headline-lg-mobile": ["Poppins"],
+                        "button": ["Inter"],
+                        "headline-md": ["Poppins"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "button": ["16px", { "lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 24px rgba(30, 41, 59, 0.06);
+        }
+        
+        .card-shadow {
+            box-shadow: 0 4px 24px rgba(30, 41, 59, 0.06);
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Smooth reveal animations */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl border-b border-white/10 shadow-sm transition-all duration-300" id="main-header">
+<div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-sm cursor-pointer scale-95 active:opacity-80 transition-all">
+<img alt="SLB Negeri Surakarta Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLsb_pJ3vFwngGfkj5XswqJbD7xBx7aqYCEG5HfJ-FhP7dBg4hcxVUz6MqdbbqD73mMt7WePdZBm8OGcCQOo7k8HnelgT6TzMQpDFoSu5lJVE99Gd0MGLkzjhAzyPB1x4U_mBLhFgMSN9VW9-rFmepnpHkv6TdyMpH_KMsX356uF9VX8WsERTgtY_XtQzPtjA1bu9pC_MxiLoY9xfClIXL4toWaAPLqeEThUOryoaQw7MgsoG83Pb-GGZQ"/>
+<span class="font-headline-md text-headline-md font-bold text-primary hidden sm:block">SLB Negeri Surakarta</span>
+</div>
+<!-- Desktop Nav (Hidden on Mobile) -->
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-primary border-b-2 border-primary font-bold px-xs py-xs" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 px-xs py-xs" href="#programs">Programs</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 px-xs py-xs" href="#facilities">Facilities</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 px-xs py-xs" href="#about">About Us</a>
+</nav>
+<div class="flex items-center gap-sm">
+<button class="bg-secondary text-on-secondary px-6 py-3 rounded-lg font-button text-button hover:-translate-y-0.5 shadow-md hover:shadow-lg transition-all">
+                    Enrolment
+                </button>
+<button aria-label="Open Menu" class="md:hidden text-on-surface p-2 rounded-full hover:bg-surface-variant transition-colors" id="mobile-menu-btn">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Mobile Navigation Drawer (Hidden by default) -->
+<div class="fixed inset-y-0 left-0 w-80 bg-surface shadow-xl z-[60] transform -translate-x-full transition-transform duration-300 flex flex-col p-md rounded-r-xl" id="mobile-drawer">
+<div class="flex justify-between items-center mb-xl">
+<h2 class="font-headline-sm text-headline-sm font-bold text-primary">Menu</h2>
+<button aria-label="Close Menu" class="text-on-surface-variant p-2 rounded-full hover:bg-surface-variant transition-colors" id="close-drawer-btn">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">close</span>
+</button>
+</div>
+<nav class="flex flex-col gap-sm">
+<a class="flex items-center gap-md px-4 py-3 bg-primary-container text-on-primary-container font-bold rounded-lg translate-x-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex items-center gap-md px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg hover:bg-surface-container-high transition-all" href="#programs">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">school</span>
+<span class="font-label-md text-label-md">Programs</span>
+</a>
+<a class="flex items-center gap-md px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg hover:bg-surface-container-high transition-all" href="#facilities">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">domain</span>
+<span class="font-label-md text-label-md">Facilities</span>
+</a>
+<a class="flex items-center gap-md px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg hover:bg-surface-container-high transition-all" href="#about">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">info</span>
+<span class="font-label-md text-label-md">About Us</span>
+</a>
+<a class="flex items-center gap-md px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg hover:bg-surface-container-high transition-all" href="#contact">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">mail</span>
+<span class="font-label-md text-label-md">Contact</span>
+</a>
+</nav>
+</div>
+<!-- Drawer Overlay -->
+<div class="fixed inset-0 bg-on-surface/20 backdrop-blur-sm z-[55] hidden opacity-0 transition-opacity duration-300" id="drawer-overlay"></div>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[85vh] flex items-center justify-center px-margin-mobile md:px-margin-desktop py-xl overflow-hidden">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-b from-surface/90 via-surface/70 to-background z-10"></div>
+<img alt="Students and teacher in classroom" class="w-full h-full object-cover object-center" data-alt="A diverse group of special needs students interacting joyfully with a female teacher around a collaborative table in a bright, modern classroom. The room is flooded with natural light from large windows, featuring accessible furniture, educational posters, and a calm, supportive atmosphere. High-end architectural photography style, focusing on inclusion and learning." src="https://lh3.googleusercontent.com/aida/AP1WRLsBoxJtgXUt1FVPRMOeP5UHdH67_V2EU6HCbmus7mIJ7XdZHrkqOo4Ilga_UCrwUHcr3a4hR5u_J-8sjgdwpnMvInoFSxEEijAo5NPEjypTSNyWzuKR1j2C2f9jmdbRNjoU3bhE49TN2QC6XwUoks1q8JXJQFwVm5TpanK6ONy_plYIQVpY4UBEoj6qjhfO-5I81grb-JvR7ep9k-BgNiQR0tLUfsmC56lGJ33LZuiKdFYAupHHwcbvcw"/>
+</div>
+<div class="relative z-10 w-full max-w-screen-xl mx-auto flex flex-col items-center text-center reveal-up">
+<span class="px-4 py-1.5 rounded-full bg-primary/10 text-primary font-label-md text-label-md mb-md inline-block border border-primary/20 backdrop-blur-md">
+                    Welcome to SLB Negeri Surakarta
+                </span>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-md max-w-4xl tracking-tight leading-tight">
+                    Empowering Every Student to <span class="text-primary">Learn</span>, <span class="text-secondary">Grow</span>, and <span class="text-tertiary-container">Succeed</span>.
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl max-w-2xl">
+                    A premium inclusive educational environment dedicated to providing specialized learning paths, comprehensive life skills, and a supportive community for extraordinary minds.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-button text-button hover:-translate-y-1 shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto flex justify-center items-center gap-2">
+                        Discover Our Programs
+                        <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+<button class="glass-panel text-primary px-8 py-4 rounded-xl font-button text-button hover:bg-surface-container transition-all duration-300 w-full sm:w-auto">
+                        Virtual Tour
+                    </button>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="px-margin-mobile md:px-margin-desktop py-xl -mt-20 relative z-20">
+<div class="max-w-screen-xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+<!-- Stat Card 1 -->
+<div class="glass-panel rounded-2xl p-md flex flex-col items-center justify-center text-center reveal-up" style="transition-delay: 100ms;">
+<div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">450+</h3>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1 uppercase tracking-wider">Active Students</p>
+</div>
+<!-- Stat Card 2 -->
+<div class="glass-panel rounded-2xl p-md flex flex-col items-center justify-center text-center reveal-up" style="transition-delay: 200ms;">
+<div class="w-12 h-12 rounded-full bg-secondary/10 text-secondary flex items-center justify-center mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person_play</span>
+</div>
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">85</h3>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1 uppercase tracking-wider">Expert Teachers</p>
+</div>
+<!-- Stat Card 3 -->
+<div class="glass-panel rounded-2xl p-md flex flex-col items-center justify-center text-center reveal-up" style="transition-delay: 300ms;">
+<div class="w-12 h-12 rounded-full bg-tertiary-container/10 text-tertiary-container flex items-center justify-center mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">library_books</span>
+</div>
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">4</h3>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1 uppercase tracking-wider">Learning Programs</p>
+</div>
+<!-- Stat Card 4 -->
+<div class="glass-panel rounded-2xl p-md flex flex-col items-center justify-center text-center reveal-up" style="transition-delay: 400ms;">
+<div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">Grade A</h3>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1 uppercase tracking-wider">National Accreditation</p>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="px-margin-mobile md:px-margin-desktop py-xl bg-surface-container-low" id="about">
+<div class="max-w-screen-xl mx-auto">
+<div class="flex flex-col lg:flex-row gap-xl items-center">
+<div class="w-full lg:w-1/2 relative reveal-up">
+<div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl relative z-10">
+<img alt="School Corridor" class="w-full h-full object-cover" data-alt="A bright, accessible modern school corridor featuring soft wood tones, wide pathways, handrails, and natural light streaming through large windows. Students and staff are seen navigating comfortably. Clean, premium educational architecture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkR-m3XExoj35C-Sbi7f_b9zakuYiM4sshw90LnK80BUbSOHiZoScxk0BpFbssknpRtD1OWi8T0B2rmUpNmNGOCQTRK-F_Cf9DEZFV8rGJaoQUyJOSFc4EKJnBXUxTT5zTRbSrdcfiIbk4wPAUUPOLIcd2xbZQtCnFZeDgz-1MGbQAFlGEjuGdvXtr-htsjwzgHeQU5n6QzLU0f-GK8yyQ-KIS6nmMH9RBVK6-4bpiLtrYkMAeHIo"/>
+</div>
+<!-- Decorative element -->
+<div class="absolute -bottom-6 -right-6 w-48 h-48 bg-primary-fixed rounded-2xl z-0 hidden md:block"></div>
+<div class="absolute -top-6 -left-6 w-32 h-32 bg-secondary-fixed-dim/40 rounded-full z-0 hidden md:block backdrop-blur-md"></div>
+</div>
+<div class="w-full lg:w-1/2 flex flex-col gap-md reveal-up" style="transition-delay: 200ms;">
+<div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2">Nurturing Potential in Every Environment</h2>
+<div class="w-16 h-1.5 bg-primary rounded-full mb-6"></div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            SLB Negeri Surakarta stands as a beacon of inclusive education, providing a specialized, safe, and stimulating environment tailored for students with diverse needs. Our comprehensive approach blends academic rigor with essential life skills training.
+                        </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+<div class="glass-panel p-4 rounded-xl flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-0.5" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-on-surface">Our Vision</h4>
+<p class="text-sm text-on-surface-variant mt-1">To be a leading center of excellence in special needs education, fostering independence and confidence.</p>
+</div>
+</div>
+<div class="glass-panel p-4 rounded-xl flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary mt-0.5" style="font-variation-settings: 'FILL' 1;">track_changes</span>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-on-surface">Our Mission</h4>
+<p class="text-sm text-on-surface-variant mt-1">Delivering tailored curricula, modern therapeutic support, and robust vocational training.</p>
+</div>
+</div>
+</div>
+<button class="mt-4 text-primary font-button text-button flex items-center gap-2 hover:gap-3 transition-all self-start">
+                            Read Full History
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Programs Section (Bento Grid Style) -->
+<section class="px-margin-mobile md:px-margin-desktop py-xl" id="programs">
+<div class="max-w-screen-xl mx-auto">
+<div class="text-center mb-xl reveal-up">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Educational Pathways</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto mt-4">Structured programs designed to guide students from foundational learning to vocational independence.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- SDLB -->
+<div class="glass-panel p-lg rounded-[1.5rem] flex flex-col group hover:-translate-y-1 transition-all duration-300 reveal-up lg:col-span-1">
+<div class="w-14 h-14 rounded-xl bg-surface-tint/10 flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 0;">child_care</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">SDLB (Primary)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-6">
+                            Focusing on foundational literacy, numeracy, and basic social skills in a highly supportive and structured environment.
+                        </p>
+<a class="text-primary font-label-md text-label-md flex items-center gap-1 hover:underline" href="#">Learn more <span class="material-symbols-outlined text-[16px]">chevron_right</span></a>
+</div>
+<!-- SMPLB -->
+<div class="glass-panel p-lg rounded-[1.5rem] flex flex-col group hover:-translate-y-1 transition-all duration-300 reveal-up lg:col-span-1" style="transition-delay: 100ms;">
+<div class="w-14 h-14 rounded-xl bg-secondary/10 flex items-center justify-center mb-6 text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 0;">local_library</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">SMPLB (Junior High)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-6">
+                            Bridging academic learning with practical daily living skills, encouraging personal responsibility and peer interaction.
+                        </p>
+<a class="text-secondary font-label-md text-label-md flex items-center gap-1 hover:underline" href="#">Learn more <span class="material-symbols-outlined text-[16px]">chevron_right</span></a>
+</div>
+<!-- SMALB -->
+<div class="glass-panel p-lg rounded-[1.5rem] flex flex-col group hover:-translate-y-1 transition-all duration-300 reveal-up lg:col-span-1" style="transition-delay: 200ms;">
+<div class="w-14 h-14 rounded-xl bg-tertiary-container/10 flex items-center justify-center mb-6 text-tertiary-container group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 0;">school</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">SMALB (Senior High)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-6">
+                            Preparing young adults for life beyond school through advanced functional academics and specialized vocational pathways.
+                        </p>
+<a class="text-tertiary-container font-label-md text-label-md flex items-center gap-1 hover:underline" href="#">Learn more <span class="material-symbols-outlined text-[16px]">chevron_right</span></a>
+</div>
+<!-- Life Skills / Vocational (Span 2 cols on desktop) -->
+<div class="glass-panel p-0 rounded-[1.5rem] overflow-hidden flex flex-col md:flex-row group hover:-translate-y-1 transition-all duration-300 reveal-up md:col-span-2 lg:col-span-3 bg-surface-container-lowest">
+<div class="w-full md:w-2/5 h-64 md:h-auto relative">
+<img alt="Vocational Training" class="w-full h-full object-cover" data-alt="Students engaged in a vocational training workshop, focusing on hands-on craft or technical skills. Bright, organized workspace with modern tools, emphasizing practical life skills and preparation for employment. Professional educational photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCf6bKjxoeg6igikXi8Fa1lrtNhY7DdNkVsJ3SEKQbtbASYnpb3U9IBTcitTlBqQ6QIOhiuYXexzCsGwZ5x0zXVwzlUwcTDyw0y6M_oCUZmehamUtFX7RzsO_0oOYEw_hC2eJzSjXMEH-DK0vfQ5plSLbF-m-mgCLN43tEl3YDNFZSZVS7uHQPczuIxrbotD7E7Qw3f_yVRE1e18tupUQ7anhP5ROoQ4pKZsYIm3qIhiQ0OEp1vjW8"/>
+</div>
+<div class="p-lg w-full md:w-3/5 flex flex-col justify-center">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">handyman</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Vocational &amp; Life Skills</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-xl">
+                                Our flagship program designed to empower students with practical, marketable skills. From culinary arts and multimedia to modern agriculture and local crafts, we ensure every student finds a path to independence.
+                            </p>
+<div class="flex gap-2 flex-wrap">
+<span class="px-3 py-1 rounded-full bg-surface-variant text-on-surface-variant text-sm">Culinary</span>
+<span class="px-3 py-1 rounded-full bg-surface-variant text-on-surface-variant text-sm">IT &amp; Multimedia</span>
+<span class="px-3 py-1 rounded-full bg-surface-variant text-on-surface-variant text-sm">Handicrafts</span>
+<span class="px-3 py-1 rounded-full bg-surface-variant text-on-surface-variant text-sm">Agriculture</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Facilities Section (Horizontal Scroll on Mobile) -->
+<section class="py-xl bg-surface-container overflow-hidden" id="facilities">
+<div class="px-margin-mobile md:px-margin-desktop max-w-screen-2xl mx-auto">
+<div class="flex justify-between items-end mb-xl reveal-up">
+<div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">World-Class Facilities</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-xl">Spaces designed intentionally for accessibility, therapy, and specialized learning.</p>
+</div>
+<div class="hidden md:flex gap-2">
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center hover:bg-primary-fixed-variant transition-colors shadow-md">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Cards Container -->
+<div class="flex overflow-x-auto gap-md pb-8 hide-scrollbar snap-x snap-mandatory reveal-up" style="transition-delay: 200ms;">
+<!-- Culinary Lab -->
+<div class="min-w-[85vw] sm:min-w-[300px] md:min-w-[400px] snap-center shrink-0 group cursor-pointer">
+<div class="relative h-64 md:h-80 rounded-[1.5rem] overflow-hidden mb-4 shadow-lg">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+<img alt="Culinary Lab" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLv6Tau0DM-K-OiFl8-QSw5za4xKGs_bJpnEmM1dfrD82T-yxrOR9XGqN8I9SSABSChwfTXOIXmUevBhiEk5XLgOc7IQEu788p5D7olOmfs3lk-Elxi6OxaBYtsWviwbvz5ZF1OQH6GKoD62O8_7SNjKXnDlCp0h_WwEmF96SEGevRgoFDBrFNJNRzXKg2pg0BFqbPwuu-tfQ4SUH5eTPFspIRrcREYqz5wdPtwESikZO_coaDD0X4aaSg"/>
+<div class="absolute bottom-0 left-0 p-lg z-20">
+<h3 class="font-headline-md text-headline-md text-white">Culinary Lab</h3>
+<p class="text-white/80 font-body-md mt-1">Tata Boga Workshop</p>
+</div>
+</div>
+</div>
+<!-- Computer Lab -->
+<div class="min-w-[85vw] sm:min-w-[300px] md:min-w-[400px] snap-center shrink-0 group cursor-pointer">
+<div class="relative h-64 md:h-80 rounded-[1.5rem] overflow-hidden mb-4 shadow-lg">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+<img alt="Computer Lab" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLvytM5Q1lBtKeAS50EklVQdQ3eLVcE39LbLuPv1EBHShnorcC7t-v_ZuFQhgVwArdnT4uVJhamIs3o954n_sySvlD7Ewg9teSWCShAWgAfBdHMvovmJjUYsVxDPlVlHonsgKuRC3CLJoKJBkDTGyV2nY2BjkdQgH8u9JfpGBNLJS7m3FFlTs9uQsmlAaOPh6Mvm726QmRRw-Lc8Run3mR1l_wf3JhOBgUdsgjSQZSSR8CgPaYoiZpWobg"/>
+<div class="absolute bottom-0 left-0 p-lg z-20">
+<h3 class="font-headline-md text-headline-md text-white">IT Center</h3>
+<p class="text-white/80 font-body-md mt-1">Accessible Computer Lab</p>
+</div>
+</div>
+</div>
+<!-- Therapy Room -->
+<div class="min-w-[85vw] sm:min-w-[300px] md:min-w-[400px] snap-center shrink-0 group cursor-pointer">
+<div class="relative h-64 md:h-80 rounded-[1.5rem] overflow-hidden mb-4 shadow-lg">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+<img alt="Therapy Room" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLtdKuDaW6BoSJi7zYqp7rdDmNrxBgGnQcgI8tSmoXNLLuEEcHWnDzYkKGH8aMiq3lf0oBqWbFGTqrbgQlVVwteLqieelfTdCqVPoSFrDQa0v3nC5qE5EC6R48mipDFGLfW6zaeoVYpE9BS4_h_yoqRG8qGD8Z_vwUY6o2b2tZdcOTtAoRhejyWacbJZ9raio4qqT1MpGYSs2uBCKzKP_ZkCO6tyBID3pxttEoYuMlBsg3dSqqNJr-Yd6w"/>
+<div class="absolute bottom-0 left-0 p-lg z-20">
+<h3 class="font-headline-md text-headline-md text-white">Therapy Suite</h3>
+<p class="text-white/80 font-body-md mt-1">Sensory &amp; Motor Skill Development</p>
+</div>
+</div>
+</div>
+<!-- View All Dummy Card -->
+<div class="min-w-[200px] snap-center shrink-0 flex items-center justify-center">
+<a class="flex flex-col items-center justify-center w-32 h-32 rounded-full border-2 border-dashed border-primary/40 text-primary hover:bg-primary/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[32px] mb-2">add</span>
+<span class="font-label-md">View All</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Component from JSON -->
+<footer class="bg-surface-container dark:bg-surface-container-highest w-full px-margin-mobile md:px-margin-desktop py-xl mt-xl border-t border-surface-container-low dark:border-surface-container-high">
+<div class="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-xl">
+<!-- Brand Column -->
+<div class="col-span-1 md:col-span-1 flex flex-col gap-4">
+<img alt="SLB Negeri Surakarta Logo" class="h-16 w-auto object-contain self-start" src="https://lh3.googleusercontent.com/aida/AP1WRLsb_pJ3vFwngGfkj5XswqJbD7xBx7aqYCEG5HfJ-FhP7dBg4hcxVUz6MqdbbqD73mMt7WePdZBm8OGcCQOo7k8HnelgT6TzMQpDFoSu5lJVE99Gd0MGLkzjhAzyPB1x4U_mBLhFgMSN9VW9-rFmepnpHkv6TdyMpH_KMsX356uF9VX8WsERTgtY_XtQzPtjA1bu9pC_MxiLoY9xfClIXL4toWaAPLqeEThUOryoaQw7MgsoG83Pb-GGZQ"/>
+<p class="font-headline-md text-headline-md font-extrabold text-primary">SLB Negeri Surakarta</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Empowering Every Student.</p>
+</div>
+<!-- Quick Links -->
+<div class="col-span-1 flex flex-col gap-4">
+<h4 class="font-button text-button text-on-surface mb-2">Quick Links</h4>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline hover:underline hover:text-primary transition-all opacity-90 hover:opacity-100" href="#">Academic Calendar</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline hover:underline hover:text-primary transition-all opacity-90 hover:opacity-100" href="#">Student Portal</a>
+</div>
+<!-- Resources -->
+<div class="col-span-1 flex flex-col gap-4">
+<h4 class="font-button text-button text-on-surface mb-2">Resources</h4>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline hover:underline hover:text-primary transition-all opacity-90 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline hover:underline hover:text-primary transition-all opacity-90 hover:opacity-100" href="#">Accessibility Statement</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline hover:underline hover:text-primary transition-all opacity-90 hover:opacity-100" href="#">Staff Directory</a>
+</div>
+<!-- Contact -->
+<div class="col-span-1 flex flex-col gap-4">
+<h4 class="font-button text-button text-on-surface mb-2">Contact Us</h4>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+                    Surakarta, Central Java, Indonesia
+                </p>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">call</span>
+                    (0271) 123456
+                </p>
+</div>
+</div>
+<div class="max-w-screen-2xl mx-auto mt-xl pt-8 border-t border-outline-variant/20 text-center md:text-left">
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 SLB Negeri Surakarta. Empowering Every Student.</p>
+</div>
+</footer>
+<script>
+        // Reveal Animations on Scroll
+        const revealElements = document.querySelectorAll('.reveal-up');
+        
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const revealOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
+        
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Mobile Drawer Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeDrawerBtn = document.getElementById('close-drawer-btn');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const drawerOverlay = document.getElementById('drawer-overlay');
+
+        const openDrawer = () => {
+            mobileDrawer.classList.remove('-translate-x-full');
+            drawerOverlay.classList.remove('hidden');
+            // Small delay to allow display:block to apply before opacity transition
+            setTimeout(() => {
+                drawerOverlay.classList.remove('opacity-0');
+            }, 10);
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        };
+
+        const closeDrawer = () => {
+            mobileDrawer.classList.add('-translate-x-full');
+            drawerOverlay.classList.add('opacity-0');
+            setTimeout(() => {
+                drawerOverlay.classList.add('hidden');
+            }, 300); // match duration
+            document.body.style.overflow = '';
+        };
+
+        mobileMenuBtn.addEventListener('click', openDrawer);
+        closeDrawerBtn.addEventListener('click', closeDrawer);
+        drawerOverlay.addEventListener('click', closeDrawer);
+
+        // Header scroll effect
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+                header.classList.replace('bg-surface/85', 'bg-surface/95');
+            } else {
+                header.classList.remove('shadow-md');
+                header.classList.replace('bg-surface/95', 'bg-surface/85');
+            }
+        });
+    </script>
+</body></html>

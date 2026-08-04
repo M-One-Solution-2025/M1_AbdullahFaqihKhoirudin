@@ -1,0 +1,46 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Announcement {
+  id          String   @id @default(uuid())
+  title       String
+  category    String   // e.g., "Akademik", "Kegiatan", "PPDB", "Prestasi"
+  summary     String
+  content     String
+  date        DateTime @default(now())
+  imageUrl    String?
+  isImportant Boolean  @default(false)
+}
+
+model SpecialProgram {
+  id          String   @id @default(uuid())
+  name        String   // e.g. "Layanan Tunanetra (Autonomia Braille & Audio)"
+  code        String   // A, B, C, C1, D, E, Autis
+  description String
+  features    String   // JSON string of feature bullet points
+  iconName    String
+}
+
+model Facility {
+  id          String   @id @default(uuid())
+  name        String
+  category    String   // Terapi, Sensorik, Akademik, Keterampilan
+  description String
+  imageUrl    String
+}
+
+model ContactSubmission {
+  id          String   @id @default(uuid())
+  name        String
+  email       String
+  phone       String
+  programType String
+  message     String
+  createdAt   DateTime @default(now())
+}
