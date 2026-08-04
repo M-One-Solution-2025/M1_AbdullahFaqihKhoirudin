@@ -22,14 +22,18 @@ export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   useEffect(() => {
-    document.documentElement.style.setProperty('--font-scale', fontScale.toString());
+    if (typeof document !== 'undefined') {
+      document.documentElement.style.setProperty('--font-scale', fontScale.toString());
+    }
   }, [fontScale]);
 
   useEffect(() => {
-    if (highContrast) {
-      document.body.classList.add('high-contrast');
-    } else {
-      document.body.classList.remove('high-contrast');
+    if (typeof document !== 'undefined') {
+      if (highContrast) {
+        document.body.classList.add('high-contrast');
+      } else {
+        document.body.classList.remove('high-contrast');
+      }
     }
   }, [highContrast]);
 
@@ -40,20 +44,33 @@ export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({
   const toggleHighContrast = () => setHighContrast((prev) => !prev);
 
   const speakText = (text: string) => {
-    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      window.speechSynthesis.cancel(); // Stop any previous speech
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'id-ID';
-      utterance.onstart = () => setIsSpeaking(true);
-      utterance.onend = () => setIsSpeaking(false);
-      utterance.onerror = () => setIsSpeaking(false);
-      window.speechSynthesis.speak(utterance);
+    if (
+      typeof window !== 'undefined' &&
+      'speechSynthesis' in window &&
+      'SpeechSynthesisUtterance' in window
+    ) {
+      try {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'id-ID';
+        utterance.onstart = () => setIsSpeaking(true);
+        utterance.onend = () => setIsSpeaking(false);
+        utterance.onerror = () => setIsSpeaking(false);
+        window.speechSynthesis.speak(utterance);
+      } catch (e) {
+        console.error('SpeechSynthesis error:', e);
+        setIsSpeaking(false);
+      }
     }
   };
 
   const stopSpeaking = () => {
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
+      try {
+        window.speechSynthesis.cancel();
+      } catch (e) {
+        console.error(e);
+      }
       setIsSpeaking(false);
     }
   };
